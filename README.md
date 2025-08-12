@@ -61,7 +61,7 @@ void loop() {
 }
 ```
 
-### Ejercicio 3 Leds parpadeantes
+### Ejercicio n°3 "Leds parpadeantes"
 ```js
 void setup() {  // Configuración inicial (ej: pines como entrada/salida)
   pinMode(13, OUTPUT);  // Pin 13 como salida
