@@ -43,7 +43,9 @@ void loop() {
   }
 }
 ```
-<a href="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Pulsador.png">Control por pulsador.</a>
+<img 
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Pulsador.png"
+width="1024" height="550" />
 
 ### Ejercicio n°4 "Leds con potenciómetro"
 ```js
@@ -56,8 +58,9 @@ void loop() {
   analogWrite(9, brillo);               // Ajustar brillo
 }
 ```
-<a href="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Potenciometro.png">Led con potenciómetro.</a>
-
+<img 
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Potenciometro.png"
+width="1024" height="550" />
 ### Ejercicio n°5 "Semáforo"
 ```js
 // C++ code - Semáforo Autos y Peatones
@@ -105,3 +108,6 @@ void loop() {
   delay(2000); // 2 segundos
 }
 ```
+<img 
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Sem%C3%A1foro.png"
+width="1024" height="550" />
