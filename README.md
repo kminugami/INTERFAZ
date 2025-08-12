@@ -15,14 +15,20 @@ void loop() {
 ```js
 void setup() {  // Configuración inicial (ej: pines como entrada/salida)
   pinMode(13, OUTPUT);  // Pin 13 como salida
+  pinMode (8, OUTPUT); // Pin 8 como salida
 }
 
 void loop() {   // Se repite infinitamente
-  digitalWrite(13, HIGH);  // Encender LED
+  digitalWrite(13, HIGH);  // Encender LED rojo
   delay(1000);             // Esperar 1 segundo
-  digitalWrite(13, LOW);   // Apagar LED
+  digitalWrite(13, LOW);   // Apagar LED rojo
+  //delay(1000);             // Esperar 1 segundo
+  digitalWrite(8, HIGH);  // Encender LED verde
   delay(1000);             // Esperar 1 segundo
+  digitalWrite(8, LOW);   // Apagar LED verde
+  //delay(1000);             // Esperar 1 segundo
 }
+
 ```
 <img 
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Led%20parpadeante.png"
