@@ -24,6 +24,9 @@ void loop() {   // Se repite infinitamente
   delay(1000);             // Esperar 1 segundo
 }
 ```
+<a href="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Led%20parpadeante.png">Led parpadeante.</a>
+
+
 ### Ejercicio n°3 "Control por pulsador"
 ```js
 void setup() {
