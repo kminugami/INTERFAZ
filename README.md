@@ -26,7 +26,7 @@ void loop() {   // Se repite infinitamente
 ```
 <img 
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Led%20parpadeante.png"
-
+width="1024" height="550" />
 
 
 ### Ejercicio n°3 "Control por pulsador"
