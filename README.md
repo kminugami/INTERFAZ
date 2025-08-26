@@ -119,7 +119,7 @@ src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Se
  />
 
 
-### Ejercicio n°5.1 "Semáforo con luz verde peatonal parpadeante"
+### Ejercicio n°5 (SEGUNDA PARTE) "Semáforo con luz verde peatonal parpadeante"
 
 ```js
 // C++ code - Semáforo Autos y Peatones
