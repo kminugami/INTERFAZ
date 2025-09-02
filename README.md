@@ -176,4 +176,5 @@ void loop() {
 }
 ```
 <img 
-src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img//20250826_125443.jpg¨
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img//20250826_125443.jpg¨ 
+/>
