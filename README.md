@@ -181,7 +181,7 @@ src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20
 
 ### Ejercicio n°6 "Arduino + Botón + Processing"
 
-```
+```js
 int buttonPin = 2;  // Pin del botón
 int buttonState = 0;
 
@@ -201,7 +201,7 @@ void loop() {
 ```
 ### Ejercicio n°7 " Elipse Interactivo: controlar un circulo en Processing mediante un potenciometro conectado a un Arduino UNO"
 
-``` 
+```js
 Serial myPort;  // Crear objeto de la clase Serial
 static String val;    // Datos recibidos desde el puerto serial
 int sensorVal = 0;
@@ -238,12 +238,12 @@ void draw()
   // Escala el valor de mouseX de 0 a 640 a un rango entre 40 y 300
   float d = map(sensorVal, 0, width, 40,500);
   fill(255, c, 0);
-  ellipse(width/2, height/2, d, d);   
+  ellipse(width/2, height/2, d, d);
 }
-´´´
+```
 ### Ejercicio n°8 "If, else if, else con potenciómetro" 
 
-```
+```js
 int valor;  // aquí guardaremos la lectura del sensor
 
 void setup() {
@@ -266,7 +266,7 @@ void loop() {
 ```
 
 ### Ejercicio n°9 "For, if, else con LED"
-```
+```js
 int leds[] = {2, 3, 4, 5}; // Creamos un arreglo con los pines donde van conectados los LEDs
 
 void setup() {
@@ -289,7 +289,7 @@ void loop() {
 }
 ```
 ### Ejercicio n°10 "Botonera LED"
-```
+```js
 // --- Configuración de botones ---
 const int numButtons = 3;
 const int buttonPins[numButtons] = {2, 4, 7};
