@@ -175,8 +175,8 @@ void loop() {
   //delay(2000); // 2 segundos
 }
 ```
-<img 
-src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250826_125443.jpg¨
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250826_125443.jpg"
 />
 
 ### Ejercicio n°6 "Arduino + Botón + Processing"
