@@ -33,7 +33,9 @@ void loop() {   // Se repite infinitamente
 <img 
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Led%20parpadeante.png"
  />
-
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250819_120523.jpg"
+/>
 
 ### Ejercicio n°3 "Control por pulsador"
 ```js
