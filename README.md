@@ -182,36 +182,14 @@ void loop() {
   //delay(2000); // 2 segundos
 }
 ```
-<img
-src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250826_125443.jpg"
-/>
  ## Registros físicos
  <img
  src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250826_125443.jpg"
  />
 https://drive.google.com/file/d/1mlSG6fUnIexw690-91uKM2A44RmK5soX/view?usp=sharing
 
-### Ejercicio n°6 "Arduino + Botón + Processing"
 
-```js
-int buttonPin = 2;  // Pin del botón
-int buttonState = 0;
-
-void setup() {
-  pinMode(buttonPin, INPUT_PULLUP); // Botón con resistencia interna
-  Serial.begin(9600);
-}
-
-void loop() {
-  buttonState = digitalRead(buttonPin);
-
-  if (buttonState == HIGH) {   // Botón presionado
-    Serial.println(1);        // Enviar un "1" a Processing
-    delay(200);               // Evitar rebotes
-  }
-}
-```
-### Ejercicio n°7 " Elipse Interactivo: controlar un circulo en Processing mediante un potenciometro conectado a un Arduino UNO"
+### Ejercicio n°6 " Elipse Interactivo: Potenciómetro + Processing"
 
 ```js
 Serial myPort;  // Crear objeto de la clase Serial
@@ -253,7 +231,60 @@ void draw()
   ellipse(width/2, height/2, d, d);
 }
 ```
-### Ejercicio n°8 "If, else if, else con potenciómetro" 
+### Registro físico
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250826_132143.jpg"
+/> 
+
+### Ejercicio n°7 "Pulsador + Processing"
+
+```js
+int buttonPin = 2;  // Pin del botón
+int buttonState = 0;
+
+void setup() {
+  pinMode(buttonPin, INPUT_PULLUP); // Botón con resistencia interna
+  Serial.begin(9600);
+}
+
+void loop() {
+  buttonState = digitalRead(buttonPin);
+
+  if (buttonState == HIGH) {   // Botón presionado
+    Serial.println(1);        // Enviar un "1" a Processing
+    delay(200);               // Evitar rebotes
+  }
+}
+```
+### Ejercicio n°8 "Pulsador + Potenciómetro + Processing"
+```js
+
+int buttonPin = 2;       // Pin del botón
+int potPin = A0;         // Pin del potenciómetro
+int buttonState = 0;
+
+void setup() {
+  pinMode(buttonPin, INPUT_PULLUP); // Botón con resistencia interna
+  Serial.begin(9600);
+}
+
+void loop() {
+  buttonState = digitalRead(buttonPin);
+
+  if (buttonState == HIGH) {   // Botón presionado
+    int potValue = analogRead(potPin);   // 0 - 1023
+    Serial.print("BTN,");     // etiqueta para Processing
+    Serial.println(potValue); // mando el valor junto con el evento
+    delay(200);               // debounce simple
+  }
+}
+```
+## Registro físico
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250902_130559.jpg"
+/>
+
+### Ejercicio n°9 "If, else if, else con potenciómetro" 
 
 ```js
 int valor;  // aquí guardaremos la lectura del sensor
@@ -277,7 +308,7 @@ void loop() {
 }
 ```
 
-### Ejercicio n°9 "For, if, else con LED"
+### Ejercicio n°9.1 "For, if, else con LED"
 ```js
 int leds[] = {2, 3, 4, 5}; // Creamos un arreglo con los pines donde van conectados los LEDs
 
@@ -300,6 +331,10 @@ void loop() {
   }
 }
 ```
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/forifelse.png"
+/>
+
 ### Ejercicio n°10 "Botonera LED"
 ```js
 // --- Configuración de botones ---
@@ -370,3 +405,11 @@ void loop() {
   delay(10);
 }
 ```
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/botoneraLED.png"
+/>
+## Registros físicos
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250923_125657.jpg"
+/>
+https://drive.google.com/drive/folders/1BS_4HVPIA8Epd3rhjGsshbNoOhZ9KH9F
