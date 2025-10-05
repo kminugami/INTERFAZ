@@ -37,7 +37,7 @@ src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Le
 <img
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250819_120523.jpg"
 />
-
+https://drive.google.com/file/d/16hHIkAbMyoYRTPSeGQQg5N0coOsQ1my-/view?usp=sharing
 ### Ejercicio n°3 "Control por pulsador"
 ```js
 void setup() {
