@@ -33,7 +33,7 @@ void loop() {   // Se repite infinitamente
 <img 
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Led%20parpadeante.png"
  />
- ## Registro físico
+ ## Registros físicos
 <img
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250819_120523.jpg"
 />
@@ -126,7 +126,6 @@ void loop() {
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Sem%C3%A1foro.png"
  />
 
-
 ### Ejercicio n°5.1 "Semáforo con luz verde peatonal parpadeante"
 
 ```js
@@ -186,9 +185,12 @@ void loop() {
 <img
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250826_125443.jpg"
 />
- ## Registro físico
-<img
-src=
+ ## Registros físicos
+ <img
+ src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250826_125443.jpg"
+ />
+https://drive.google.com/file/d/1mlSG6fUnIexw690-91uKM2A44RmK5soX/view?usp=sharing
+
 ### Ejercicio n°6 "Arduino + Botón + Processing"
 
 ```js
