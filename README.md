@@ -33,6 +33,7 @@ void loop() {   // Se repite infinitamente
 <img 
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Led%20parpadeante.png"
  />
+ ## Registro físico
 <img
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250819_120523.jpg"
 />
@@ -126,7 +127,7 @@ src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Se
  />
 
 
-### Ejercicio n°5 (SEGUNDA PARTE) "Semáforo con luz verde peatonal parpadeante"
+### Ejercicio n°5.1 "Semáforo con luz verde peatonal parpadeante"
 
 ```js
 // C++ code - Semáforo Autos y Peatones
@@ -185,7 +186,9 @@ void loop() {
 <img
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250826_125443.jpg"
 />
-
+ ## Registro físico
+<img
+src=
 ### Ejercicio n°6 "Arduino + Botón + Processing"
 
 ```js
