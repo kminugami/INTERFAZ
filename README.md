@@ -235,6 +235,7 @@ void draw()
 <img
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250826_132143.jpg"
 /> 
+https://drive.google.com/file/d/1SS2iqvV8yQ0-BHBpgFph9AiLawvGEEtV/view?usp=sharing
 
 ### Ejercicio n°7 "Pulsador + Processing"
 
