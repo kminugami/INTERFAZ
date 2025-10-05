@@ -69,6 +69,11 @@ void loop() {
 <img 
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Potenciometro.png"
  />
+ ## Registro físico
+ <img
+ src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250819_133310.jpg"
+ />
+ 
 ### Ejercicio n°5 "Semáforo"
 ```js
 // C++ code - Semáforo Autos y Peatones
