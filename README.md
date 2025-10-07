@@ -188,7 +188,7 @@ void loop() {
  />
 https://drive.google.com/file/d/1mlSG6fUnIexw690-91uKM2A44RmK5soX/view?usp=sharing
 
-### PRESENTACIÓN código modificado desde: "Semáforo con luz verde peatonal parpadeante"
+### TRABAJO CON NOTA código modificado del ejercicio del semáforo
 ```js
 // Definición de pines
 int LED_1 = 6;  // Luz roja
@@ -259,6 +259,11 @@ void loop() {
 <img
 src= "https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Captura%20de%20pantalla%202025-10-07%20113653.png"
 />
+<img
+src= "https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20251007_122731.jpg"
+/>
+https://drive.google.com/file/d/1E66RT5fyDiQHEzSPEaJsZVLlKjOaHmVS/view?usp=sharing
+
 ### Ejercicio n°6 " Elipse Interactivo: Potenciómetro + Processing"
 
 ```js
