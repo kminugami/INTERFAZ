@@ -126,7 +126,7 @@ void loop() {
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Sem%C3%A1foro.png"
  />
 
-### Ejercicio n°5.1 "Semáforo con luz verde peatonal parpadeante"
+### Ejercicio n°5.1 "Semáforo con luz verde peatonal parpadeante" PRESENTACIÓN
 
 ```js
 // C++ code - Semáforo Autos y Peatones
@@ -188,6 +188,74 @@ void loop() {
  />
 https://drive.google.com/file/d/1mlSG6fUnIexw690-91uKM2A44RmK5soX/view?usp=sharing
 
+### PRESENTACIÓN código modificado desde: "Semáforo con luz verde peatonal parpadeante"
+```js
+// Definición de pines
+int LED_1 = 6;  // Luz roja
+int LED_2 = 7;  // Luz roja			
+int LED_3 = 8;  // Luz roja
+int LED_4 = 5;  // Luz amarilla
+int LED_5 = 4; // Luz amarilla
+int LED_6 = 3; // Luz amarilla
+int LED_7 = 13; // Luz verde
+int LED_8 = 12; // Luz verde
+int LED_9 = 11; // Luz verde
+
+
+void setup() {
+  // Configuramos todos los pines como salida
+  pinMode(LED_1, OUTPUT);
+  pinMode(LED_2, OUTPUT);
+  pinMode(LED_3, OUTPUT);
+  pinMode(LED_4, OUTPUT);
+  pinMode(LED_5, OUTPUT);
+  pinMode(LED_6, OUTPUT);
+  pinMode(LED_7, OUTPUT);
+  pinMode(LED_8, OUTPUT);
+  pinMode(LED_9, OUTPUT);
+}
+
+void loop() {
+//FASE 1
+ digitalWrite(LED_1, HIGH);   
+  delay(200);
+  digitalWrite(LED_2, HIGH); 
+  delay(200);
+  digitalWrite(LED_3, HIGH);  
+  delay(200);
+  digitalWrite(LED_4, HIGH);
+  delay(200);
+  digitalWrite(LED_5, HIGH); 
+  delay(200);
+  digitalWrite(LED_6, HIGH);
+  delay(200);
+  digitalWrite(LED_7, HIGH);
+  delay(200);
+  digitalWrite(LED_8, HIGH);
+  delay(200);
+  digitalWrite(LED_9, HIGH);
+  delay(100);
+  // FASE 2
+  digitalWrite(LED_9, LOW);   
+  delay(200);
+  digitalWrite(LED_8, LOW); 
+  delay(200);
+  digitalWrite(LED_7, LOW);  
+  delay(200);
+  digitalWrite(LED_6, LOW);
+  delay(200);
+  digitalWrite(LED_5, LOW); 
+  delay(200);
+  digitalWrite(LED_4, LOW);
+  delay(200);
+  digitalWrite(LED_3, LOW);
+  delay(200);
+  digitalWrite(LED_2, LOW);
+  delay(200);
+  digitalWrite(LED_1, LOW);
+  delay(500);
+  }
+```
 
 ### Ejercicio n°6 " Elipse Interactivo: Potenciómetro + Processing"
 
