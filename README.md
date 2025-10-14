@@ -489,3 +489,19 @@ src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/bo
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250923_125657.jpg"
 />
 https://drive.google.com/drive/folders/1BS_4HVPIA8Epd3rhjGsshbNoOhZ9KH9F
+
+### Ejercicio n°11 "Sensor distancia visual"
+```js
+// Definir el pin del sensor Sharp
+int sharpPin = A0;
+
+void setup() {
+  Serial.begin(9600); // Iniciar comunicación serial
+}
+
+void loop() {
+  int sensorValue = analogRead(sharpPin); // Leer valor del sensor
+  Serial.println(sensorValue); // Enviar valor a Processing
+  delay(100); // Esperar un momento
+}
+```
