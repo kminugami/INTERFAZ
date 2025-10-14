@@ -1,4 +1,12 @@
 # INTERFAZ II
+1.[Hola Mundo](#ejercicio-n1-arduino-hola-mundo) <br>
+2.
+
+
+
+
+
+
 ### Ejercicio n°1 Arduino: "Hola Mundo"
 
 ```js
@@ -33,7 +41,7 @@ void loop() {   // Se repite infinitamente
 <img 
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Led%20parpadeante.png"
  />
- ## Registros físicos
+ #### Registros físicos
 <img
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250819_120523.jpg"
 />
@@ -70,7 +78,7 @@ void loop() {
 <img 
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Potenciometro.png"
  />
- ## Registro físico
+ #### Registro físico
  <img
  src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250819_133310.jpg"
  />
@@ -182,7 +190,7 @@ void loop() {
   //delay(2000); // 2 segundos
 }
 ```
- ## Registros físicos
+ #### Registros físicos
  <img
  src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250826_125443.jpg"
  />
@@ -306,7 +314,7 @@ void draw()
   ellipse(width/2, height/2, d, d);
 }
 ```
-### Registro físico
+#### Registro físico
 <img
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250826_132143.jpg"
 /> 
@@ -355,7 +363,7 @@ void loop() {
   }
 }
 ```
-## Registro físico
+#### Registro físico
 <img
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20250902_130559.jpg"
 />
