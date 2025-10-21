@@ -519,3 +519,15 @@ void loop() {
   delay(100); // Esperar un momento
 }
 ```
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Captura%20de%20pantalla%202025-10-14%20115129.png"
+/>
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Captura%20de%20pantalla%202025-10-14%20115143.png"
+/>
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Captura%20de%20pantalla%202025-10-14%20120252.png"
+/>
+<img
+src=""
+/>
