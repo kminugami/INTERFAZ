@@ -599,6 +599,16 @@ void loop() {
 
 ### Evaluación 2: "Rastros sin Contacto"
 #### Integrantes: Sofía Becerra, Camila Gallegos, Daniela Reyes.
+Esta instalación interactiva es
+posible gracias al uso del sensor de la cámara que ayuda a reconocer el
+movimiento, en este caso el de la mano, de quien esté frente a esta.
+Cuando el usuario mueve la mano frente a la cámara, aparece una estela blanca
+que sigue ese movimiento. Además, aparece un círculo amarillo en la pantalla que
+el usuario puede y debe tocar con su mano. Cuando lo toca mediante la estela, el
+círculo explota y aparece otro nuevo en nueva posición aleatoria.
+Por medio del arduino y el potenciómetro se añade una nueva experiencia,ya que
+con ayuda del potenciómetro se cambia el color de la estela a gusto personal, esto
+añade un sentimiento de control sobre la actividad.
 #### Código Arduino 
 ```js
 void setup() {
