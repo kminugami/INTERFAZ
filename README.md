@@ -528,6 +528,20 @@ src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Ca
 <img
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Captura%20de%20pantalla%202025-10-14%20120252.png"
 />
+### Ejercicio n°13 "Sensor de humedad (DFRobot)"
+```js
+void setup()
+{
+  Serial.begin(9600);// abre el puerto serial y Establece la velocidad en baudios a 9600 bps
+}
+void loop()
+{
+  int sensorValue;
+  sensorValue = analogRead(0);   //conectar el sensor de humedad al pin analogo 0
+  Serial.println(sensorValue); //imprime el valor a serial.
+  delay(200);
+}
+```
 <img
-src=""
+src="https://github.com/kminugami/INTERFAZ/blob/main/img/Captura%20de%20pantalla%202025-10-14%20125809.png"
 />
