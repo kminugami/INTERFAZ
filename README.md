@@ -528,9 +528,18 @@ src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Ca
 <img
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Captura%20de%20pantalla%202025-10-14%20115143.png"
 />
+## Registros físicos
+<img
+src="https://github.com/kminugami/INTERFAZ/blob/main/img/20251014_114258.jpg"
+/>
+https://drive.google.com/file/d/1Nt6zh9Op5ze5TjNsoD9sP6wmIRcp49fC/view?usp=drive_link
+
+### Ejercicio n°12 "Cámara y signos"
 <img
 src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Captura%20de%20pantalla%202025-10-14%20120252.png"
 />
+
+
 ### Ejercicio n°13 "Sensor de humedad (DFRobot)"
 ```js
 void setup()
@@ -548,3 +557,201 @@ void loop()
 <img
 src="https://github.com/kminugami/INTERFAZ/blob/main/img/Captura%20de%20pantalla%202025-10-14%20125809.png"
 />
+### Ejercicio n°14 "Cuerpo, vídeo, sensor sharp"
+```js
+// --- Sensor Sharp conectado al pin A0 ---
+int sensorPin = A0;
+int valor;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  valor = analogRead(sensorPin);
+  Serial.println(valor);
+  delay(50); // envío cada 50 ms
+}
+```
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Captura%20de%20pantalla%202025-10-21%20125429.png"
+/>
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/Captura%20de%20pantalla%202025-10-21%20130105.png"
+/>
+
+### Ejercicio n°15 "Promedio de Imágenes llamando una carpeta + potenciometro"
+```js
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  int potValue = analogRead(A0);
+  Serial.println(potValue);
+  delay(20);
+}
+```
+## No se pudo hacer por el error "ArrayIndexOutOfBoundsException: Index 345600 out of bounds for length 345600"
+
+### Evaluación 2: "Rastros sin Contacto"
+#### Integrantes: Sofía Becerra, Camila Gallegos, Daniela Reyes.
+#### Código Arduino 
+```js
+void setup() {
+Serial.begin(9600);
+}
+void loop() {
+int valor = analogRead(A0); // Lee el potenciómetro
+Serial.println(valor); // Envía el valor (0–1023)
+
+delay(50); // Evita saturar el puerto serie
+}
+```
+
+#### Código Processing
+```js
+import processing.video.*;
+import processing.serial.*;
+Capture cam;
+Serial myPort;
+// --- Variables de movimiento ---
+PImage prevFrame;
+float threshold = 40; // sensibilidad
+PVector motionPos;
+// --- Estela (seguimiento) ---
+int num = 60;
+float mx[] = new float[num];
+float my[] = new float[num];
+// --- Color controlado por potenciómetro ---
+float potValue = 0;
+color trailColor = color(255, 255, 255);
+// --- Círculo interactivo ---
+PVector targetCircle;
+float circleSize = 60;
+boolean circleVisible = true;
+boolean exploding = false;
+float explosionSize = 0;
+float explosionAlpha = 255;
+// --- Límites seguros ---
+float margin = 100;
+
+void setup() {
+size(640, 480);
+// Iniciar cámara
+String[] cameras = Capture.list();
+if (cameras.length == 0) {
+println("No se detectó ninguna cámara.");
+exit();
+}
+cam = new Capture(this, cameras[0]);
+cam.start();
+prevFrame = createImage(width, height, RGB);
+motionPos = new PVector(width/2, height/2);
+noStroke();
+// Crear círculo aleatorio
+targetCircle = new PVector(random(margin, width - margin), random(margin, height
+- margin));
+// --- Inicializar puerto serie ---
+println(Serial.list()); // muestra los puertos disponibles
+String portName = "COM8"; // ✅ Puerto correcto
+myPort = new Serial(this, portName, 9600);
+myPort.bufferUntil('\n');
+}
+void captureEvent(Capture cam) {
+cam.read();
+}
+void serialEvent(Serial myPort) {
+String inString = trim(myPort.readStringUntil('\n'));
+if (inString != null && inString.length() > 0) {
+try {
+potValue = float(inString);
+potValue = constrain(potValue, 0, 1023);
+// 🎨 Mapear valor del potenciómetro a un tono de color HSB (0-255)
+colorMode(HSB, 255);
+float hue = map(potValue, 0, 1023, 0, 255);
+trailColor = color(hue, 255, 255); // tono, saturación, brillo
+colorMode(RGB, 255); // volver a RGB para el resto del dibujo
+
+} catch (Exception e) {
+println("Error al leer potenciómetro: " + e);
+}
+}
+}
+void draw() {
+if (cam.width == 0) return;
+background(0);
+PImage diff = createImage(width, height, RGB);
+cam.loadPixels();
+prevFrame.loadPixels();
+diff.loadPixels();
+float avgX = 0;
+float avgY = 0;
+int motionCount = 0;
+// Detectar movimiento (mano)
+for (int i = 0; i < cam.pixels.length; i++) {
+color curr = cam.pixels[i];
+color prev = prevFrame.pixels[i];
+float diffR = abs(red(curr) - red(prev));
+float diffG = abs(green(curr) - green(prev));
+float diffB = abs(blue(curr) - blue(prev));
+float diffVal = (diffR + diffG + diffB) / 3;
+if (diffVal > threshold) {
+diff.pixels[i] = color(255);
+int x = i % width;
+int y = i / width;
+avgX += x;
+avgY += y;
+motionCount++;
+} else {
+diff.pixels[i] = color(0);
+}
+}
+diff.updatePixels();
+prevFrame.copy(cam, 0, 0, width, height, 0, 0, width, height);
+
+// Posición promedio del movimiento
+if (motionCount > 500) {
+motionPos.set(width - (avgX / motionCount), avgY / motionCount);
+}
+// --- Estela colorida controlada por potenciómetro ---
+int which = frameCount % num;
+mx[which] = motionPos.x;
+my[which] = motionPos.y;
+noStroke();
+for (int i = 0; i < num; i++) {
+int index = (which + 1 + i) % num;
+float alpha = map(i, 0, num, 50, 200);
+fill(red(trailColor), green(trailColor), blue(trailColor), alpha);
+ellipse(mx[index], my[index], i, i);
+}
+// --- Círculo amarillo interactivo ---
+if (circleVisible) {
+fill(255, 200, 0, 200);
+ellipse(targetCircle.x, targetCircle.y, circleSize, circleSize);
+float d = dist(motionPos.x, motionPos.y, targetCircle.x, targetCircle.y);
+if (d < circleSize / 2) {
+circleVisible = false;
+exploding = true;
+explosionSize = circleSize;
+explosionAlpha = 255;
+}
+}
+// --- Explosión ---
+if (exploding) {
+fill(255, random(150, 255), 0, explosionAlpha);
+ellipse(targetCircle.x, targetCircle.y, explosionSize, explosionSize);
+explosionSize += 15;
+explosionAlpha -= 20;
+if (explosionAlpha <= 0) {
+exploding = false;
+targetCircle.set(random(margin, width - margin), random(margin, height -
+margin));
+circleVisible = true;
+
+}
+}
+}
+```
+https://www.youtube.com/watch?v=XciaUtJu_mo
+https://youtu.be/OPgpKR6e550
