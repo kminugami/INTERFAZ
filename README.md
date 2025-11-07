@@ -12,8 +12,11 @@
   9.1 [For, if, else con LED](#ejercicio-n91-for-if-else-con-led) <br>
 10. [Botonera LED](#ejercicio-n10-botonera-led) <br>
 11. [Sensor distancia visual](#ejercicio-n11-sensor-distancia-visual) <br>
-12. 
-13.
+12. [Cámara y signos](#ejercicio-n12-c%C3%A1mara-y-signos) <br>
+13. [Sensor de humedad (DFRobot)](#ejercicio-n13-sensor-de-humedad-dfrobot)<br>
+14. ["Cuerpo, vídeo, sensor sharp](#ejercicio-n14-cuerpo-v%C3%ADdeo-sensor-sharp)<br>
+15. [Promedio de Imágenes llamando una carpeta + potenciometro](#ejercicio-n15-promedio-de-im%C3%A1genes-llamando-una-carpeta--potenciometro)<br>
+16. [Evaluación 2: "Rastros sin Contacto"](#evaluaci%C3%B3n-2-rastros-sin-contacto)<br>
 
 
 ### Ejercicio n°1 Arduino: "Hola Mundo"
@@ -592,7 +595,7 @@ void loop() {
   delay(20);
 }
 ```
-## No se pudo hacer por el error "ArrayIndexOutOfBoundsException: Index 345600 out of bounds for length 345600"
+#### No se pudo hacer por el error "ArrayIndexOutOfBoundsException: Index 345600 out of bounds for length 345600"
 
 ### Evaluación 2: "Rastros sin Contacto"
 #### Integrantes: Sofía Becerra, Camila Gallegos, Daniela Reyes.
