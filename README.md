@@ -12,6 +12,9 @@
   9.1 [For, if, else con LED](#ejercicio-n91-for-if-else-con-led) <br>
 10. [Botonera LED](#ejercicio-n10-botonera-led) <br>
 11. [Sensor distancia visual](#ejercicio-n11-sensor-distancia-visual) <br>
+12. 
+13.
+
 
 ### Ejercicio n°1 Arduino: "Hola Mundo"
 
