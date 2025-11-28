@@ -17,7 +17,7 @@
 14. [Cuerpo, vídeo, sensor sharp](#ejercicio-n14-cuerpo-v%C3%ADdeo-sensor-sharp)<br>
 15. [Promedio de Imágenes llamando una carpeta + potenciometro](#ejercicio-n15-promedio-de-im%C3%A1genes-llamando-una-carpeta--potenciometro)<br>
 16. [Evaluación 2: "Rastros sin Contacto"](#evaluaci%C3%B3n-2-rastros-sin-contacto)<br>
-
+17. [Evaluación final "Rastros sin Contacto 2.0"] ()<br>
 
 ### Ejercicio n°1 Arduino: "Hola Mundo"
 
@@ -769,3 +769,255 @@ circleVisible = true;
 https://www.youtube.com/watch?v=XciaUtJu_mo
 
 https://youtu.be/OPgpKR6e550
+
+### Evaluación final: "Rastros sin Contacto 2.0"
+#### Integrantes: Sofía Becerra, Camila Gallegos, Daniela Reyes.
+Para el examen final decidimos integrar al ejercicio un conteo de la cantidad de circulos explotados, este se podría reiniciar apretando un botón que se incorporó después. Esto se pensó debido a que el ¨juego¨ solo podría ser utilizado por una persona a la vez y así esta llevaría un conteo personal para luego reiniciarse si se integra otro participante.
+#### Código Arduino 
+```js
+const int buttonPin = A1;  // Pin donde está conectado el botón
+int lastButtonState = HIGH;
+int currentButtonState;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(buttonPin, INPUT_PULLUP);  // Configura botón con resistencia pull-up interna
+}
+
+void loop() {
+  // Leer estado del botón (LOW cuando está presionado)
+  currentButtonState = digitalRead(buttonPin);
+
+  if (lastButtonState == HIGH && currentButtonState == LOW) {  // flanco de bajada, botón presionado
+    Serial.println("R");  // enviar comando reiniciar
+    delay(200);           // anti rebote y evitar múltiples envíos
+  } else if (currentButtonState == HIGH) {  // botón no presionado, enviar valor potenciómetro
+    int valor = analogRead(A0); // Lee valor potenciómetro
+    Serial.println(valor);      // Envía el valor (0–1023)
+    delay(50);                  // evita saturar puerto serie
+  }
+
+  lastButtonState = currentButtonState;
+}
+
+```
+
+#### Código Processing
+```js
+
+  import processing.video.*;
+import processing.serial.*;
+import ddf.minim.*;   // 🔊 Librería de sonido
+
+Capture cam;
+Serial myPort;
+
+// --- Variables de sonido ---
+Minim minim;
+AudioPlayer[] sonidos = new AudioPlayer[5];
+
+// --- Variables de color (detección de manos rojas) ---
+color targetColor = color(255, 0, 0);  
+float colorThreshold = 150;            
+PVector motionPos;
+
+// --- Estela (seguimiento) ---
+int num = 60;
+float mx[] = new float[num];
+float my[] = new float[num];
+
+// --- Color controlado por potenciómetro ---
+float potValue = 0;  
+color trailColor = color(255, 255, 255); 
+
+// --- Círculo interactivo ---
+PVector targetCircle;
+float circleSize = 60;
+boolean circleVisible = true;
+boolean exploding = false;
+float explosionSize = 0;
+float explosionAlpha = 255;
+
+// --- Límites seguros ---
+float margin = 100;
+
+// --- Conteo de explosiones ---
+int explosionCount = 0;
+
+void setup() {
+  size(640, 480);
+  
+  // Iniciar cámara
+  String[] cameras = Capture.list();
+  if (cameras.length == 0) {
+    println("No se detectó ninguna cámara.");
+    exit();
+  }
+  cam = new Capture(this, 640, 480, cameras[0]);
+  cam.start();
+  
+  motionPos = new PVector(width/2, height/2);
+  noStroke();
+  
+  // Crear círculo aleatorio
+  targetCircle = new PVector(random(margin, width - margin), random(margin, height - margin));
+  
+  // --- Inicializar puerto serie ---
+  println(Serial.list()); 
+  String portName = "COM3"; 
+  myPort = new Serial(this, portName, 9600);
+  myPort.bufferUntil('\n');
+
+  // --- Inicializar sonido ---
+  minim = new Minim(this);
+
+  sonidos[0] = minim.loadFile("sonido1.mp3");
+  sonidos[1] = minim.loadFile("sonido2.mp3");
+  sonidos[2] = minim.loadFile("sonido3.mp3");
+  sonidos[3] = minim.loadFile("sonido4.mp3");
+  sonidos[4] = minim.loadFile("sonido5.mp3");
+}
+
+void captureEvent(Capture cam) {
+  cam.read();
+}
+
+void serialEvent(Serial myPort) {
+  String inString = trim(myPort.readStringUntil('\n'));
+  if (inString != null && inString.length() > 0) {
+    if (inString.equals("R")) {
+      explosionCount = 0;  // Reiniciar conteo si llega "R"
+      println("Conteo reiniciado desde Arduino");
+    } else {
+      try {
+        potValue = float(inString);
+        potValue = constrain(potValue, 0, 1023);
+        
+        // 🎨 Mapear potenciómetro a tono de color
+        colorMode(HSB, 255);
+        float hue = map(potValue, 0, 1023, 0, 255);
+        trailColor = color(hue, 255, 255);
+        colorMode(RGB, 255);
+      } catch (Exception e) {
+        println("Error al leer potenciómetro: " + e);
+      }
+    }
+  }
+}
+
+void draw() {
+  if (cam.width == 0) return;
+  
+  background(0); 
+
+  cam.loadPixels();
+  
+  // --- Buscar color rojo en cámara ---
+  float avgX = 0;
+  float avgY = 0;
+  int count = 0;
+  
+  for (int x = 0; x < cam.width; x += 2) {
+    for (int y = 0; y < cam.height; y += 2) {
+      int loc = x + y * cam.width;
+      int current = cam.pixels[loc];
+      
+      float d = distSqColor(current, targetColor);
+      if (d < colorThreshold * colorThreshold) {
+        avgX += x;
+        avgY += y;
+        count++;
+      }
+    }
+  }
+  
+  if (count > 50) {
+    avgX /= count;
+    avgY /= count;
+    
+    motionPos.set(width - avgX, avgY);  // efecto espejo
+  }
+
+  // --- Estela colorida ---
+  int which = frameCount % num;
+  mx[which] = motionPos.x;
+  my[which] = motionPos.y;
+
+  noStroke();
+  for (int i = 0; i < num; i++) {
+    int index = (which + 1 + i) % num;
+    float alpha = map(i, 0, num, 50, 200);
+    fill(red(trailColor), green(trailColor), blue(trailColor), alpha);
+    ellipse(mx[index], my[index], i, i);
+  }
+
+  // --- Círculo amarillo interactivo ---
+  if (circleVisible) {
+    fill(255, 200, 0, 200);
+    ellipse(targetCircle.x, targetCircle.y, circleSize, circleSize);
+    
+    float d = dist(motionPos.x, motionPos.y, targetCircle.x, targetCircle.y);
+    if (d < circleSize / 2) {
+
+      // 🔥 Explosión y sonido
+      circleVisible = false;
+      exploding = true;
+      explosionSize = circleSize;
+      explosionAlpha = 255;
+
+      playRandomSound();   // 🔊 Sonido aleatorio
+    }
+  }
+
+  // --- Explosión ---
+  if (exploding) {
+    fill(255, random(150, 255), 0, explosionAlpha);
+    ellipse(targetCircle.x, targetCircle.y, explosionSize, explosionSize);
+    explosionSize += 15;
+    explosionAlpha -= 20;
+
+    if (explosionAlpha <= 0) {
+      exploding = false;
+      targetCircle.set(random(margin, width - margin), random(margin, height - margin));
+      circleVisible = true;
+      
+      explosionCount++;  // Incrementar conteo
+    }
+  }
+  
+  // Mostrar conteo de círculos explotados
+  fill(255);
+  textSize(20);
+  text("Explotados: " + explosionCount, 10, height - 20);
+}
+
+// --- Función de distancia entre colores ---
+float distSqColor(int c1, int c2) {
+  float r1 = red(c1);
+  float g1 = green(c1);
+  float b1 = blue(c1);
+  float r2 = red(c2);
+  float g2 = green(c2);
+  float b2 = blue(c2);
+  return sq(r1 - r2) + sq(g1 - g2) + sq(b1 - b2);
+}
+
+// --- 🔊 Reproducir sonido aleatorio ---
+void playRandomSound() {
+  int idx = int(random(sonidos.length));
+  sonidos[idx].rewind();
+  sonidos[idx].play();
+}
+
+```
+### Registros de la evaluación
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/20251125_120041.jpg"
+/>
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/IMG-20251125-WA0028.jpg"
+/>
+<img
+src="https://raw.githubusercontent.com/kminugami/INTERFAZ/refs/heads/main/img/IMG-20251125-WA0029.jpg"
+/>
+https://drive.google.com/file/d/14XwCLQvL9bH1MZW7FCHlEg6QhSuEMzRj/view?usp=sharing
