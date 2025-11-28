@@ -17,7 +17,7 @@
 14. [Cuerpo, vídeo, sensor sharp](#ejercicio-n14-cuerpo-v%C3%ADdeo-sensor-sharp)<br>
 15. [Promedio de Imágenes llamando una carpeta + potenciometro](#ejercicio-n15-promedio-de-im%C3%A1genes-llamando-una-carpeta--potenciometro)<br>
 16. [Evaluación 2: "Rastros sin Contacto"](#evaluaci%C3%B3n-2-rastros-sin-contacto)<br>
-17. [Evaluación final "Rastros sin Contacto 2.0"] ()<br>
+17. [Evaluación final "Rastros sin Contacto 2.0"](#https://github.com/kminugami/INTERFAZ/tree/main?tab=readme-ov-file#c%C3%B3digo-arduino-1)<br>
 
 ### Ejercicio n°1 Arduino: "Hola Mundo"
 
